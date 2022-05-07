@@ -41,11 +41,11 @@ app.post("/", function (req, res) {
     var jsonData = JSON.stringify(data)
 
     const listID = "433266e95e"
-    const appid = "i6193c27b7b4a550edde1e0aa03c0a921-us13"
+    const appid = "6193c27b7b4a550edde1e0aa03c0a921-us13"
     const url = "https://us13.api.mailchimp.com/3.0/lists/" + listID
     const options = {
         method: "POST",
-        auth: "asaoud1:i6193c27b7b4a550edde1e0aa03c0a921-us13"
+        auth: "asaoud1:6193c27b7b4a550edde1e0aa03c0a921-us13"
     }
 
     const request = https.request(url, options, function (response) {
