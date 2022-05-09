@@ -1,2 +1,3 @@
 mailchimpCredentials.json
 .DS_Store
+#adding ds_store to list of unwanted items
