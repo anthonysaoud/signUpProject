@@ -4,6 +4,11 @@ const bodyParser = require('body-parser')
 const https = require('https')
 const app = express()
 
+//storing the secret keys in this mailchimjson package
+const fs = require('fs');
+const obj = JSON.parse(fs.readFileSync('mailchimpCredentials.json', 'utf8'));
+
+
 //this allows you to access the css and images on the server side. relative URL
 app.use(express.static("public"))
 
@@ -40,12 +45,12 @@ app.post("/", function (req, res) {
     //convert data object into a jsonData format using stringify
     var jsonData = JSON.stringify(data)
 
-    const listID = "433266e95e"
-    const appid = "6193c27b7b4a550edde1e0aa03c0a921-us13"
+    const appid  = obj.credentials[0].appid
+    const listID = obj.credentials[0].listid
     const url = "https://us13.api.mailchimp.com/3.0/lists/" + listID
     const options = {
         method: "POST",
-        auth: "asaoud1:6193c27b7b4a550edde1e0aa03c0a921-us13"
+        auth: "asaoud1:"+appid
     }
 
     const request = https.request(url, options, function (response) {
